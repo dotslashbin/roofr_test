@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Interfaces\ParkingLotRepositoryInterface;
+use app\Interfaces\ParkingSpotRepositoryInterface;
+use App\Repositories\ParkingLotRepository;
+use App\Repositories\ParkingSpotRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ParkingSpotRepositoryInterface::class, ParkingSpotRepository::class);
+        $this->app->bind(ParkingLotRepositoryInterface::class, ParkingLotRepository::class);
     }
 
     /**
